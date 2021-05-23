@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">timcoffee</string>
+    <string name="_30_000">30.000</string>
+    <string name="_20_000">20.000</string>
+    <string name="add_to_cart">add to cart</string>
+    <string name="find_the_best">Find The Best</string>
+    <string name="coffee_for_you">Coffee for you</string>
+    <string name="americano">Americano</string>
+    <string name="cafe_latte">Cafe Latte</string>
+    <string name="cappucino">Cappucino</string>
+    <string name="_22_000">22.000</string>
+    <string name="vanilla_latte">Vanilla latte</string>
+    <string name="caramel_latte">Caramel latte</string>
+    <string name="_25_000">25.000</string>
+    <string name="hazelnut_latte">Hazelnut latte</string>
+    <string name="creme_brulee">Creme Brulee</string>
+    <string name="kosu_gula_aren">Kosu gula aren</string>
+    <string name="_18_000">18.000</string>
+    <string name="single_origin">Single origin</string>
+    <string name="piccolo_coffee">Piccolo Coffee</string>
+    <string name="macchiato">Macchiato</string>
+    <string name="cafe_mocha">Cafe mocha</string>
+    <string name="_27_000">27.000</string>
+    <string name="almondmilk">Almondmilk</string>
+    <string name="frappuccino">Frappuccino</string>
+    <string name="_23_000">23.000</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D1E1E0"
+    tools:context=".checkout">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <RelativeLayout
+            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/burger_menu"></ImageView>
+
+            <TextView
+                android:id="@+id/txtbanner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:text="Informasi Pembayaran"
+                android:textColor="#023E4A"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtbanner"
+                android:layout_marginTop="30dp"
+                android:text="Informasi pembayaran"
+                android:textColor="#023E4A"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="#023E4A"></View>
+
+            <TableLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:stretchColumns="1">
+
+                <TableRow
+                    android:background="#D1E1E0">
+                    <TextView
+                        android:textColor="#023E4A"
+                        android:layout_column="1"
+                        android:text="COffee 1"
+                        android:padding="3dip" />
+                    <TextView
+                        android:textColor="#023E4A"
+                        android:text="@string/_20_000"
+                        android:gravity="right"
+                        android:padding="3dip" />
+                </TableRow>
+
+                <TableRow
+                    android:background="">
+                    <TextView
+                        android:textColor="#023E4A"
+                        android:layout_column="1"
+                        android:text="Coffee 2"
+                        android:padding="3dip" />
+                    <TextView
+                        android:textColor="#023E4A"
+                        android:text="@string/_23_000"
+                        android:gravity="right"
+                        android:padding="3dip" />
+                </TableRow>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#023E4A"></View>
+                <TableRow
+                    android:layout_marginTop="15dp"
+                    android:background="#D1E1E0">
+                    <TextView
+                        android:textColor="#023E4A"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_column="1"
+                        android:text="Coffee 3"
+                        android:padding="3dip" />
+                    <TextView
+                        android:textColor="#023E4A"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:text="@string/_23_000"
+                        android:gravity="right"
+                        android:padding="3dip" />
+                </TableRow>
+
+                <CheckBox
+                    android:textColor="#023E4A"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/checkbox_cheese"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aktifkan Booking"
+                    android:onClick="onCheckboxClicked"/>
+
+                <TableRow
+                    android:layout_marginTop="15dp"
+                    android:background="#D1E1E0">
+                    <TextView
+                        android:textColor="#023E4A"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_column="1"
+                        android:text="Booking Jam"
+                        android:padding="3dip" />
+
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
