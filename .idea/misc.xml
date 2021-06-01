@@ -3,10 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/drawable/custom_button.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/drawable/cutom_button2.xml" value="0.109375" />
         <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/drawable/rounded.xml" value="0.2203125" />
-        <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/layout/activity_checkout.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/layout/activity_antrian_pesanan.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/layout/activity_checkout.xml" value="0.22" />
+        <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/layout/activity_main.xml" value="0.14553990610328638" />
         <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/layout/activity_main3.xml" value="0.1" />
+        <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/layout/activity_order_success.xml" value="0.18" />
+        <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/layout/activity_order_sucsess.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/layout/activity_signup.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/layout/card_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/layout/nav_header.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/layout/order_sucsess.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/iman cangga/AndroidStudioProjects/timcoffee/app/src/main/res/menu/optionmenu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
