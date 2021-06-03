@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bg_timcoffee">#D1E1E0</color>
     <color name="bg_main_timcoffee">#023E4A</color>
+    <color name="red">	#FF0000</color>
 </resources>

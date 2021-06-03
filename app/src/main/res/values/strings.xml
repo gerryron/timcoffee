@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">timcoffee</string>
+    <string name="app_name">TimCoffee</string>
     <string name="_30_000">30.000</string>
     <string name="_20_000">20.000</string>
     <string name="add_to_cart">add to cart</string>
@@ -34,4 +34,18 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="order_success">Order Success</string>
+
+    <!--    Login Activity-->
+    <string name="username">Nomer HP / Email</string>
+    <string name="password">Kata Sandi</string>
+    <string name="login">Login</string>
+    <string name="belumPunyaAkun">Belum punya akun? Daftar</string>
+    <string name="register">Daftar</string>
+
+    <!--    SignUp Activity-->
+    <string name="name">Nama</string>
+    <string name="noHp">Nomer Handphone</string>
+    <string name="email">Email</string>
+    <string name="confirmPassword">Konfirmasi Password</string>
+    <string name="sudahPunyaAkun">Sudah punya akun? Login</string>
 </resources>

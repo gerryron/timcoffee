@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context=".Login">
+    tools:context=".LoginActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -18,148 +18,82 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/iv_LoginLogo"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginLeft="150dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginRight="150dp"
                 android:layout_marginBottom="50dp"
-                android:src="@drawable/logo"></ImageView>
+                android:src="@drawable/logo"/>
 
-            //bt login
-
-            <RelativeLayout
-                android:id="@+id/login"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="200dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"
-                    android:text="Login"
-                    android:textColor="@color/bg_main_timcoffee"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="30dp"
-                    android:background="#023E4A"></View>
-
-            </RelativeLayout>
-
-            //bt signup
-
-            <RelativeLayout
-                android:id="@+id/signup"
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="200dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="30dp"
-                    android:text="Sign-up"
-                    android:textColor="@color/bg_main_timcoffee"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
         </RelativeLayout>
 
-        //username
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="10dp">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:text="Username"
-                android:textColor="#023E4A"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/username"
+                android:id="@+id/tv_LoginTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="" />
-
-        </RelativeLayout>
-
-        //password
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="40dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:text="Password"
-                android:textColor="#023E4A"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textAlignment="center"
+                android:text="@string/login"
+                android:textColor="@color/bg_main_timcoffee"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp"/>
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/et_LoginUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_LoginTitle"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_baseline_account_circle_24"
+                android:drawablePadding="24dp"
+                android:hint="@string/username"
+                android:inputType="text"
+                android:minHeight="48dp" />
+
+            <EditText
+                android:id="@+id/et_LoginPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_LoginUsername"
                 android:layout_marginTop="20dp"
-                android:text="" />
+                android:drawableStart="@drawable/ic_baseline_lock_24"
+                android:drawablePadding="24dp"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:minHeight="48dp" />
+
         </RelativeLayout>
 
         <Button
-            android:id="@+id/bt_login"
+            android:id="@+id/bt_Login"
             android:layout_marginTop="40dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/custom_button"
-            android:text="Login"
-            android:textSize="20dp"
+            android:text="@string/login"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#fff">
-        </Button>
+            android:textColor="#fff"/>
 
-        <Button
-            android:id="@+id/bt_signup"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="32dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+        <TextView
+            android:id="@+id/tv_LoginSignup"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/custom_button"
-            android:text="Register"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="#fff">
-        </Button>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textAlignment="center"
+            android:text="@string/belumPunyaAkun"/>
 
     </LinearLayout>
 
