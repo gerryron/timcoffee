@@ -1,10 +1,12 @@
 package com.example.timcoffee;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -49,19 +51,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.item_Home:
-                        Toast.makeText(MainActivity.this, "Home Selected", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.item_cart:
-                        Toast.makeText(MainActivity.this, "Cart Selected", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.item_order:
-                        Toast.makeText(MainActivity.this, "Order Selected", Toast.LENGTH_SHORT).show();
-                        break;
                     case R.id.item_aboutUs:
-                        Toast.makeText(MainActivity.this, "About us Selected", Toast.LENGTH_SHORT).show();
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setTitle("About us")
+                                .setMessage("Designed and Development by TimCoffee - Universitas Pamulang\n\n"+
+                                        "@Dani Saputra - 181011401127\n" +
+                                        "@Dian Eko Prasetyo - 181011401970\n" +
+                                        "@Gerryron - 181011401627\n" +
+                                        "@Iman Cangga Wiguna - 181011402598\n" +
+                                        "@Muhammad Bayu Aji - 181011401592")
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                }).create().show();
                         break;
                     case R.id.item_logout:
+                        Toast.makeText(MainActivity.this, "Anda telah logout", Toast.LENGTH_SHORT).show();
                         sessionManager.logoutSession();
                         moveToLogin();
                         finish();

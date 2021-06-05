@@ -45,7 +45,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="40dp"
         android:layout_marginRight="20dp"
-        android:background="#fff">
+        android:background="@color/bg_timcoffee">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

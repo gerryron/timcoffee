@@ -4,12 +4,11 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="0dp"
-    app:cardElevation="2dp"
-    android:background="@color/bg_timcoffee">
+    app:cardElevation="2dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/bg_timcoffee">
 
         <RelativeLayout
@@ -93,23 +92,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rl_parentItem"
-            android:orientation="vertical"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="25dp">
+            android:layout_marginRight="25dp"
+            android:background="@color/bg_timcoffee"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:text="Pesanan Anda : "
-                android:textStyle="bold"
                 android:textColor="@color/bg_main_timcoffee"
                 android:textSize="14sp"
-                android:layout_marginBottom="5dp"/>
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@color/bg_timcoffee"/>
 
         </LinearLayout>
 

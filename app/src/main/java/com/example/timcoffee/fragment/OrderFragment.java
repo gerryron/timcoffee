@@ -49,29 +49,58 @@ public class OrderFragment extends Fragment {
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Memuat Data ...");
         progressDialog.show();
-        Call<List<Order>> order = apiInterface.getOrderByPhoneNumber(nomerHp);
-        order.enqueue(new Callback<List<Order>>() {
 
-            @Override
-            public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
-                if (response.body() != null && response.isSuccessful()) {
-                    progressDialog.dismiss();
-                    Toast.makeText(getActivity(), "Berhasil Memuat Data" , Toast.LENGTH_SHORT).show();
-                    adapter = new OrderAdapter(getActivity(), response.body(),role);
-                    recyclerView.setAdapter(adapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                } else {
-                    progressDialog.dismiss();
-                    Toast.makeText(getActivity(), "Gagal Memuat Data" , Toast.LENGTH_SHORT).show();
+        if (role.equalsIgnoreCase("user")){
+            Call<List<Order>> order = apiInterface.getOrderByPhoneNumber(nomerHp);
+            order.enqueue(new Callback<List<Order>>() {
+
+                @Override
+                public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
+                    if (response.body() != null && response.isSuccessful()) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getActivity(), "Berhasil Memuat Data" , Toast.LENGTH_SHORT).show();
+                        adapter = new OrderAdapter(getActivity(), response.body(),role);
+                        recyclerView.setAdapter(adapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    } else {
+                        progressDialog.dismiss();
+                        Toast.makeText(getActivity(), "Gagal Memuat Data" , Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<List<Order>> call, Throwable t) {
-                progressDialog.dismiss();
-                Toast.makeText(getActivity(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<List<Order>> call, Throwable t) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Call<List<Order>> order = apiInterface.getAllOrderQueue();
+            order.enqueue(new Callback<List<Order>>() {
+
+                @Override
+                public void onResponse(Call<List<Order>> call, Response<List<Order>> response) {
+                    if (response.body() != null && response.isSuccessful()) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getActivity(), "Berhasil Memuat Data" , Toast.LENGTH_SHORT).show();
+                        adapter = new OrderAdapter(getActivity(), response.body(),role);
+                        recyclerView.setAdapter(adapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    } else {
+                        progressDialog.dismiss();
+                        Toast.makeText(getActivity(), "Gagal Memuat Data" , Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Order>> call, Throwable t) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(), t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+
         return view;
     }
 }

@@ -18,6 +18,7 @@ import com.example.timcoffee.R;
 import com.example.timcoffee.api.APIInterface;
 import com.example.timcoffee.api.ApiClient;
 import com.example.timcoffee.model.Order;
+import com.example.timcoffee.model.OrderUpdateStatusRequest;
 import com.example.timcoffee.model.User;
 
 import java.util.ArrayList;
@@ -66,7 +67,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
                     statusMessage = "Cancel";
                     break;
             }
-            holder.tvOrderSuccess.setText(statusMessage);
+            holder.tvOrderStatus.setText(statusMessage);
+            holder.rlMenuUser.setVisibility(View.VISIBLE);
+            holder.rlMenuAdmin.setVisibility(View.GONE);
         } else {
             apiInterface = ApiClient.getRetrofit().create(APIInterface.class);
             holder.tvOrderCancel.setOnClickListener(new View.OnClickListener() {
@@ -76,15 +79,16 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
                     progressDialog.setMessage("Tunggu Sebentar ...");
                     progressDialog.show();
 
-                    Call<Order> updateStatusOrderCall = apiInterface.updateOrder( listOrder.get(position).getId(),"3");
+                    Call<Order> updateStatusOrderCall = apiInterface.updateOrder( listOrder.get(position).getId(),new OrderUpdateStatusRequest("3"));
                     updateStatusOrderCall.enqueue(new Callback<Order>() {
                         @Override
                         public void onResponse(Call<Order> call, Response<Order> response) {
                             if (response.body() != null && response.isSuccessful()) {
+                                progressDialog.dismiss();
                                 Toast.makeText(context, "Sukses update status", Toast.LENGTH_SHORT).show();
                             } else {
                                 progressDialog.dismiss();
-                                Toast.makeText(context, "Gagal Update Status", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Gagal Update Status " + userRole, Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -102,12 +106,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
                     ProgressDialog progressDialog = new ProgressDialog(context);
                     progressDialog.setMessage("Tunggu Sebentar ...");
                     progressDialog.show();
-
-                    Call<Order> updateStatusOrderCall = apiInterface.updateOrder( listOrder.get(position).getId(),"1");
+                    Call<Order> updateStatusOrderCall = apiInterface.updateOrder( listOrder.get(position).getId(),new OrderUpdateStatusRequest("1"));
                     updateStatusOrderCall.enqueue(new Callback<Order>() {
                         @Override
                         public void onResponse(Call<Order> call, Response<Order> response) {
                             if (response.body() != null && response.isSuccessful()) {
+                                progressDialog.dismiss();
                                 Toast.makeText(context, "Sukses update status", Toast.LENGTH_SHORT).show();
                             } else {
                                 progressDialog.dismiss();
@@ -130,11 +134,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
                     progressDialog.setMessage("Tunggu Sebentar ...");
                     progressDialog.show();
 
-                    Call<Order> updateStatusOrderCall = apiInterface.updateOrder( listOrder.get(position).getId(),"1");
+                    Call<Order> updateStatusOrderCall = apiInterface.updateOrder( listOrder.get(position).getId(),new OrderUpdateStatusRequest("2"));
                     updateStatusOrderCall.enqueue(new Callback<Order>() {
                         @Override
                         public void onResponse(Call<Order> call, Response<Order> response) {
                             if (response.body() != null && response.isSuccessful()) {
+                                progressDialog.dismiss();
                                 Toast.makeText(context, "Sukses update status", Toast.LENGTH_SHORT).show();
                             } else {
                                 progressDialog.dismiss();
@@ -150,6 +155,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
                     });
                 }
             });
+            holder.rlMenuUser.setVisibility(View.GONE);
+            holder.rlMenuAdmin.setVisibility(View.VISIBLE);
         }
         holder.recyclerView.setAdapter(new OrderDetailAdapter(context, listOrder.get(position).getOrderDetails()));
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -171,7 +178,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
             tvOrderCancel = itemView.findViewById(R.id.tv_orderCancel);
             tvOrderProcess = itemView.findViewById(R.id.tv_orderProcess);
             tvOrderSuccess = itemView.findViewById(R.id.tv_orderSuccess);
-            tvOrderSuccess = itemView.findViewById(R.id.tv_status);
+            tvOrderStatus = itemView.findViewById(R.id.tv_status);
             rlMenuAdmin = itemView.findViewById(R.id.rl_orderMenuAdmin);
             rlMenuUser = itemView.findViewById(R.id.rl_orderMenuUser);
             recyclerView = itemView.findViewById(R.id.recyclerView);

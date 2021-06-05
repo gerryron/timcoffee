@@ -2,6 +2,7 @@ package com.example.timcoffee.api;
 
 import com.example.timcoffee.model.LoginRequestBody;
 import com.example.timcoffee.model.Order;
+import com.example.timcoffee.model.OrderUpdateStatusRequest;
 import com.example.timcoffee.model.Product;
 import com.example.timcoffee.model.RegisterRequestBody;
 import com.example.timcoffee.model.User;
@@ -32,9 +33,12 @@ public interface APIInterface {
     @PUT("order/updateStatus/{id}")
     Call<Order> updateOrder(
             @Path("id") int id,
-            @Body String requestBody
+            @Body OrderUpdateStatusRequest requestBody
      );
 
     @GET("order/getOrderQueue/{phoneNumber}")
     Call<List<Order>> getOrderByPhoneNumber(@Path("phoneNumber") String phoneNumber);
+
+    @GET("order/getAllOrderQueue")
+    Call<List<Order>> getAllOrderQueue();
 }
