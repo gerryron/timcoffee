@@ -48,4 +48,28 @@
     <string name="email">Email</string>
     <string name="confirmPassword">Konfirmasi Password</string>
     <string name="sudahPunyaAkun">Sudah punya akun? Login</string>
+
+    <!-- Main Activity  -->
+    <string name="goodMorning">Good Morning</string>
+    <string name="goodAfternoon">Good Afternoon</string>
+    <string name="goodEvening">Good Evening</string>
+    <string name="mondayQuote">May your coffee be strong and your monday be short</string>
+    <string name="tuesdayQuote">Tuesday isn\'t so bad... it\'s a sign that i\'ve somehow survived monday</string>
+    <string name="wednesdayQuote">It is wellness wednesday. Take care yourself, stay refreshed, and stress less</string>
+    <string name="thursdayQuote">Happy thursday, one small positive thought in the morning can change your whole day</string>
+    <string name="fridayQuote">It\'s friday morning mankind! Good vibe, don\'t frown and let the monster see you smile</string>
+    <string name="weekendQuote">Better days coming they\'re called saturday and sunday</string>
+    <string name="dayWeekNumberFormat">u</string>
+    <string name="home">Home</string>
+    <string name="cart">Cart</string>
+    <string name="about_us">About Us</string>
+    <string name="logout">Logout</string>
+    <string name="drawer_start">drawer_start</string>
+    <string name="drawer_close">drawer_close</string>
+    <string name="informasi_pembayaran">Informasi pembayaran</string>
+    <string name="your_cart_is_empty">Your Cart is Empty</string>
+    <string name="activate_booking_order">Activate booking order</string>
+    <string name="informasi_antrian">Informasi Antrian</string>
+    <string name="please_order_our_product">Please Order Our Product</string>
+
 </resources>

@@ -1,115 +1,105 @@
 package com.example.timcoffee;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.timcoffee.adapter.MenuAdapter;
-import com.example.timcoffee.model.MenuModel;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import com.example.timcoffee.fragment.MainFragment;
+import com.example.timcoffee.util.SessionManager;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn_buy;
-    private TextView btn_back_menu;
-    private TextView btn_cancle;
-    private TextView btn_login;
-
-    RecyclerView recyclerView;
-    List<MenuModel> listMenu = new ArrayList<>();
-
-
+    private SessionManager sessionManager;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private MaterialToolbar materialToolbar;
+    private TextView tvNavNama, tvNavEmail;
+    private String nama, email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        recyclerView = findViewById(R.id.recyclerView);
-
-        //membuat model data
-
-        Drawable drawable = getResources().getDrawable(R.drawable.drink1);
-
-
-        MenuModel menuModel1 = new MenuModel();
-        menuModel1.setGambarMenu(drawable);
-        menuModel1.setNamaMenu("Latte");
-        menuModel1.setHargaMenu(new BigDecimal("20000"));
-
-        for (int i = 0; i < 20 ; i++) {
-            listMenu.add(menuModel1);
+        // Cek Session
+        sessionManager = new SessionManager(MainActivity.this);
+        if (!sessionManager.isLoggedin()) {
+            moveToLogin();
         }
 
+        initViews();
+        setSupportActionBar(materialToolbar);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, materialToolbar,
+                R.string.drawer_start, R.string.drawer_close);
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
-        //membuat adapter
-        recyclerView.setAdapter(new MenuAdapter(MainActivity.this, listMenu));
-
-        //layout manager
-        recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this, 2));
-
-        //btn act buy
-        btn_buy = (Button) findViewById(R.id.bt_buy);
-
-        btn_buy.setOnClickListener(new View.OnClickListener() {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, checkout.class);
-                startActivity(intent);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.item_Home:
+                        Toast.makeText(MainActivity.this, "Home Selected", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.item_cart:
+                        Toast.makeText(MainActivity.this, "Cart Selected", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.item_order:
+                        Toast.makeText(MainActivity.this, "Order Selected", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.item_aboutUs:
+                        Toast.makeText(MainActivity.this, "About us Selected", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.item_logout:
+                        sessionManager.logoutSession();
+                        moveToLogin();
+                        finish();
+                        break;
+                }
+                return false;
             }
         });
 
-        //button forward pay
-        btn_back_menu = (TextView)findViewById(R.id.txtbanner);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, new MainFragment());
+        transaction.commit();
 
-        //button forward pay
-        btn_cancle = (TextView)findViewById(R.id.txtbanner);
-
-        //button forward login
-        btn_login = (TextView)findViewById(R.id.txtbanner);
-
+        // Set user information
+        nama = sessionManager.getUserDetail().get(SessionManager.NAME);
+        if (nama.split(" ").length > 1){
+            nama = nama.split(" ")[1];
         }
+        email = sessionManager.getUserDetail().get(SessionManager.EMAIL);
+        tvNavNama.setText(nama.substring(0,1).toUpperCase() + nama.substring(1).toLowerCase());
+        tvNavEmail.setText(email);
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.optionmenu, menu);
-        return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menu:
-                Toast.makeText(this, "Menu Selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.home:
-                Toast.makeText(this, "Home Selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.login:
-                Toast.makeText(this, "Logout Selected", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+    private void initViews() {
+        drawerLayout = findViewById(R.id.drawer);
+        navigationView = findViewById(R.id.navigationView);
+        materialToolbar = findViewById(R.id.toolbar);
 
+        View headerView = navigationView.getHeaderView(0);
+        tvNavNama = headerView.findViewById(R.id.tv_headerName);
+        tvNavEmail = headerView.findViewById(R.id.tv_headerEmail);
+    }
+
+    private void moveToLogin() {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+        finish();
     }
 }

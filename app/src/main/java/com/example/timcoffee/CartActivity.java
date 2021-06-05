@@ -8,11 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.timcoffee.fragment.OrderFragment;
+import android.widget.Toast;
+
+import com.example.timcoffee.fragment.CartFragment;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class OrderActivity extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private MaterialToolbar materialToolbar;
@@ -20,14 +22,14 @@ public class OrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order);
+        setContentView(R.layout.activity_cart);
 
         initViews();
         initBottomNavView();
         setSupportActionBar(materialToolbar);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, new OrderFragment());
+        transaction.replace(R.id.container, new CartFragment());
         transaction.commit();
 
     }
@@ -39,14 +41,14 @@ public class OrderActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.btmNav_Home:
-                        Intent homeIntent = new Intent(OrderActivity.this, MainActivity.class);
+                        Intent homeIntent = new Intent(CartActivity.this, MainActivity.class);
                         homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(homeIntent);
                         break;
-                    case R.id.btmNav_Cart:
-                        Intent cartIntent = new Intent(OrderActivity.this, CartActivity.class);
-                        cartIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(cartIntent);
+                    case R.id.btmNav_Order:
+                        Intent orderIntent = new Intent(CartActivity.this, OrderActivity.class);
+                        orderIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(orderIntent);
                         break;
                 }
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#D1E1E0"
     android:orientation="vertical"
-    tools:context=".order_success">
+    tools:context=".OrderSuccessActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -19,12 +19,6 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:src="@drawable/burger_menu"></ImageView>
 
             <ImageView
                 android:layout_width="80dp"
@@ -62,8 +56,8 @@
         </RelativeLayout>
 
         <Button
-            android:id="@+id/bt_order_success"
-            android:layout_marginTop="100dp"
+            android:id="@+id/btn_osBack"
+            android:layout_marginTop="80dp"
             android:layout_marginBottom="32dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"

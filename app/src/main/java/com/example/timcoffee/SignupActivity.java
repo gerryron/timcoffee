@@ -39,6 +39,7 @@ public class SignupActivity extends AppCompatActivity {
         tvLogin = findViewById(R.id.tv_SignupLogin);
         etName = findViewById(R.id.et_RegisterName);
         etPhoneNumber = findViewById(R.id.et_RegisterPhoneNumber);
+        etEmail = findViewById(R.id.et_RegisterEmail);
         etPassword = findViewById(R.id.et_RegisterPassword);
         etConfirmPassword = findViewById(R.id.et_RegisterConfirmPassword);
 
@@ -48,7 +49,8 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View v) {
                 nama = etName.getText().toString();
                 noHp = etPhoneNumber.getText().toString();
-                email = etPassword.getText().toString();
+                email = etEmail.getText().toString();
+                password = etPassword.getText().toString();
                 confirmPassword = etConfirmPassword.getText().toString();
                 register(nama, noHp, email, password, confirmPassword);
             }
@@ -71,6 +73,11 @@ public class SignupActivity extends AppCompatActivity {
             return;
         }
 
+        if ((noHp == null || noHp.equals("")) || (email == null || email.equals(""))){
+            Toast.makeText(SignupActivity.this, "noHp/ email tidak boleh kosong", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         ProgressDialog progressDialog = new ProgressDialog(SignupActivity.this);
         progressDialog.setMessage("Tunggu Sebentar ...");
         progressDialog.show();
@@ -87,7 +94,7 @@ public class SignupActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                     startActivity(intent);
-                } if (response.code() == 409) {
+                } else if (response.code() == 409) {
                     progressDialog.dismiss();
                     Toast.makeText(SignupActivity.this, "Nomer Hp/Email sudah terdaftar", Toast.LENGTH_SHORT).show();
                 } else {

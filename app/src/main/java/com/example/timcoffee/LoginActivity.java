@@ -15,6 +15,7 @@ import com.example.timcoffee.api.APIInterface;
 import com.example.timcoffee.api.ApiClient;
 import com.example.timcoffee.model.LoginRequestBody;
 import com.example.timcoffee.model.User;
+import com.example.timcoffee.util.SessionManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,6 +23,7 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private SessionManager sessionManager;
     private APIInterface apiInterface;
     private Button btnLogin;
     private TextView tvSignup;
@@ -72,10 +74,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.body() != null && response.isSuccessful()) {
                     progressDialog.dismiss();
+                    sessionManager = new SessionManager(LoginActivity.this);
+                    sessionManager.createLoginSession(response.body());
                     Toast.makeText(LoginActivity.this, "Berhasil Login : " + response.body().getName(), Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
+                    finish();
                 } else if (response.code() == 406) {
                     progressDialog.dismiss();
                     Toast.makeText(LoginActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();
